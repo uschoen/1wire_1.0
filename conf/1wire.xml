@@ -1,0 +1,69 @@
+<root>
+	<daemon>false</daemon>
+	<path>/usr/local/etc/1WireToHM</path>
+	<wired_temp name="1 Wired Temperature" package="Raspberry" modul="wired1" enable="true">
+	   	<config>
+	   		<gpio_pin>4</gpio_pin>
+			<intervall>30</intervall>
+			<gpio_pin>4</gpio_pin>
+			<tempDiv>0.5</tempDiv>
+			<path>/sys/bus/w1/devices/w1_bus_master1/</path>
+			<hm_url>http://IP HOMEMATIC/config/xmlapi/statechange.cgi</hm_url>
+			<slaves>w1_master_slaves</slaves>
+			<device_list>
+				<_H_Boden_Ruecklauf enable="true" ise_id="29680" sensor_id="28-0115913432ff"></_H_Boden_Ruecklauf>
+				<_H_Boden_Vorlauf enable="true" ise_id="29679" sensor_id="28-011591355eff"></_H_Boden_Vorlauf>
+				<_H_Heizung_Vorlauf enable="true" ise_id="29681" sensor_id="28-011591363eff"></_H_Heizung_Vorlauf>
+				<_H_Koerkper_Ruecklauf enable="true" ise_id="29701" sensor_id="28-011591382fff"></_H_Koerkper_Ruecklauf>
+				<_H_Koerkper_Vorlauf enable="true" ise_id="29700" sensor_id="28-0115913679ff"></_H_Koerkper_Vorlauf>
+				<_H_Warmwasser enable="true" ise_id="29702" sensor_id="28-0315911b36ff"></_H_Warmwasser>
+			</device_list>
+		</config>
+	</wired_temp>
+	<logging>
+		<loglevel>
+			<unkown>true</unkown>
+		</loglevel>
+		<output>
+			<file>
+				<enable>true</enable>
+				<loglevel>
+					<unkown>true</unkown>
+					<error>true</error>
+					<critical>true</critical>
+					<alert>true</alert>
+					<emergency>true</emergency>
+					<debug>false</debug>
+					<info>false</info>
+				</loglevel>
+				<filename>error.log</filename>
+				<dir>/usr/local/etc/1WireToHM/log/</dir>
+				<clearlog>true</clearlog>
+				<logrotation>true</logrotation>
+				<holdzipfiles>3</holdzipfiles>
+				<filesize>10000</filesize>
+			</file>
+			<file>
+				<enable>true</enable>
+				<filename>debug.log</filename>
+				<dir>/usr/local/etc/1WireToHM/log/</dir>
+				<clearlog>false</clearlog>
+				<logrotation>true</logrotation>
+				<holdzipfiles>3</holdzipfiles>
+				<filesize>10000</filesize>
+			</file>
+			<console>
+				<enable>true</enable>
+				<loglevel>
+					<unkown>true</unkown>
+					<error>true</error>
+					<critical>true</critical>
+					<alert>true</alert>
+					<emergency>true</emergency>
+					<debug>true</debug>
+					<info>true</info>
+				</loglevel>
+			</console>
+		</output>
+	</logging>
+</root>

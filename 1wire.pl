@@ -6,8 +6,6 @@ use warnings;
 use Getopt::Long qw(GetOptions);
 use Data::Dumper;
 use lib "/usr/local/etc/1WireToHM/modul";
-use DefaultClass;
-use Gateways::DefaultGateways;
 use Gateways::Raspberry::wired1;
 
 our $LOG;    				# Globale Logging

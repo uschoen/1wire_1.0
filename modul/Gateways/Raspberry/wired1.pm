@@ -2,7 +2,6 @@
 $| = 1;
 
 package Gateways::Raspberry::wired1;
-@ISA = qw(Gateways::DefaultGateways);
 use strict;
 use warnings;
 use Data::Dumper;  
@@ -10,7 +9,36 @@ use Data::Dumper;
 
 use constant true => 1;
 use constant false => 0;
-
+####################################################### 
+sub DESTROY
+#	
+#
+#######################################################
+{
+	my $self= shift;
+	
+	$self->log("info", ref($self)." shutdown");
+}
+####################################################### 
+sub log
+#	
+#
+#######################################################
+{
+	my $self= shift;
+	my $logdata->{'level'}=lc(shift ||"unkown");
+	$logdata->{'msg'}=shift	||"unkown msg";
+	if (!($self->{'log'})){
+		#######
+		print $logdata->{'msg'}."\n";
+		#######
+		return;
+	}
+	($logdata->{'package'},$logdata->{'filename'},$logdata->{'line'}) = caller;
+	$logdata->{'package'}=ref($self);
+	$self->{'log'}->write($logdata);
+	return 0;	
+}
 #######################################################
 sub new
 #	Vars=%config
@@ -30,7 +58,8 @@ sub new
 	bless $self,$class;
 	$self->init_args($arg_hash);
 	return $self;
-}  
+} 
+
 ####################################################### 
 sub init_args
 #	
